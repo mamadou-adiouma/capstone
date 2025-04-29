@@ -1,4 +1,9 @@
-from .views import sayHello
 from django.urls import path
 
-urlpatterns = [path("", sayHello, name="sayhello")]
+# from .views import sayHello
+from . import views
+
+urlpatterns = [
+    #     path("", sayHello, name="sayhello"),
+    path("", views.index, name="index"),
+]
