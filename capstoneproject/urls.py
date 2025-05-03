@@ -21,4 +21,8 @@ from django.urls import path, include
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("capstoneapp/", include("capstoneapp.urls")),
+    path("api/", include("capstoneapp.urls")),
+    # API
+    path("capstoneapp/menu", include("capstoneapp.urls")),
+    path("capstoneapp/booking", include("capstoneapp.urls")),
 ]
