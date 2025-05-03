@@ -17,6 +17,12 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path, include
+from rest_framework.routers import DefaultRouter
+
+from capstoneapp import views
+
+router = DefaultRouter()
+router.register(r"tables", views.bookingViewSet),
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -24,5 +30,7 @@ urlpatterns = [
     path("api/", include("capstoneapp.urls")),
     # API
     path("capstoneapp/menu", include("capstoneapp.urls")),
-    path("capstoneapp/booking", include("capstoneapp.urls")),
+    # path("capstoneapp/booking", include("capstoneapp.urls")),
+    # ViewSet
+    path("capstoneapp/booking/", include(router.urls)),
 ]

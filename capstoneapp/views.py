@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from rest_framework import generics
+from rest_framework import generics, viewsets
 from rest_framework.views import APIView
 
 # from rest_framework import viewsets
@@ -70,12 +70,18 @@ class SingleMenuItemView(generics.RetrieveUpdateAPIView, generics.DestroyAPIView
 
 #  VIA API
 #  POST && GET
-class BookingItemView(generics.ListCreateAPIView):
-    queryset = Booking.objects.all()
-    serializer_class = bookingSerializer
+# class BookingItemView(generics.ListCreateAPIView):
+#     queryset = Booking.objects.all()
+#     serializer_class = bookingSerializer
 
 
 #  GET PUT && DELETE
-class SingleBookingItemView(generics.RetrieveUpdateAPIView, generics.DestroyAPIView):
+# class SingleBookingItemView(generics.RetrieveUpdateAPIView, generics.DestroyAPIView):
+#     queryset = Booking.objects.all()
+#     serializer_class = bookingSerializer
+
+
+#  VIEWSET
+class bookingViewSet(viewsets.ModelViewSet):
     queryset = Booking.objects.all()
     serializer_class = bookingSerializer
