@@ -9,10 +9,24 @@ from capstoneapp.models import Menu, Booking
 from capstoneapp.serializers import menuSerializer, bookingSerializer
 
 
+#  For authentification
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import IsAuthenticated
+
+
 # from django.http import HttpResponse
 
 
 # Create your views here.
+
+
+# To acces this y'wd authenticated
+@api_view()
+@permission_classes([IsAuthenticated])
+def msg(request):
+    return Response({"message": "this view is protected"})
+
+
 # def sayHello(request):
 #     return HttpResponse("Hello, World ! response")
 
@@ -45,6 +59,7 @@ def index(request):
 #  VIA API
 #  POST && GET
 class MenuItemView(generics.ListCreateAPIView):
+    permission_classes = [IsAuthenticated]
     queryset = Menu.objects.all()
     serializer_class = menuSerializer
 
@@ -85,3 +100,9 @@ class SingleMenuItemView(generics.RetrieveUpdateAPIView, generics.DestroyAPIView
 class bookingViewSet(viewsets.ModelViewSet):
     queryset = Booking.objects.all()
     serializer_class = bookingSerializer
+
+
+# View (auth - token)  (PUT, GET && POST)
+class SingleMenuItemView(generics.ListCreateAPIView):
+    queryset = Menu.objects.all()
+    serializer_class = menuSerializer
