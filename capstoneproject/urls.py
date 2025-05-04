@@ -33,4 +33,7 @@ urlpatterns = [
     # path("capstoneapp/booking", include("capstoneapp.urls")),
     # ViewSet
     path("capstoneapp/booking/", include(router.urls)),
+    # authentifation - djoser
+    path("auth/", include("djoser.urls")),
+    path("auth/", include("djoser.urls.authtoken")),
 ]

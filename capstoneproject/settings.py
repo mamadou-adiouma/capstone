@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     "capstoneapp",
     "rest_framework",
     "rest_framework.authtoken",
+    "djoser",
 ]
 
 MIDDLEWARE = [
@@ -104,6 +105,15 @@ AUTH_PASSWORD_VALIDATORS = [
         "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
     },
 ]
+
+REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES ": [
+        "rest_framework.authentication.TokenAuthentication",
+        "rest_framework.authentication.SessionAuthentication",
+    ],
+}
+
+DJOSER = {"USER_ID_FIELD": "username"}
 
 
 # Internationalization
