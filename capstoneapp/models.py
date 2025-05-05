@@ -4,6 +4,11 @@ from django.db import models
 # Create your models here.
 
 
+# Test model
+def __str__(self):
+    return f"{self.title} : {self.price}"
+
+
 # Serializeurs (auth - token)
 class Menu(models.Model):
     title = models.CharField(max_length=100)
@@ -11,6 +16,10 @@ class Menu(models.Model):
     inventory = models.IntegerField()
 
     def get_item(self):
+        return f"{self.title} : {str(self.price)}"
+
+    # Test model
+    def __str__(self):
         return f"{self.title} : {str(self.price)}"
 
 
